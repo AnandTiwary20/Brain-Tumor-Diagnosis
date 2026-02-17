@@ -68,3 +68,5 @@ local_settings.py
 venv/
 env/
 ENV/
+
+!models/BrainTumor10EpochsCategorical.h5
