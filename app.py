@@ -1,4 +1,7 @@
+# import os
 import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
 import numpy as np
 import cv2
 from keras.models import load_model
@@ -10,7 +13,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-model = load_model('BrainTumor10EpochsCategorical.h5')
+model = load_model('models/BrainTumor10EpochsCategorical.h5')
 print("Model Loaded Successfully")
 
 def get_className(classNo):
@@ -45,5 +48,9 @@ def predict():
 
     return jsonify({"result": result_text})
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
+
